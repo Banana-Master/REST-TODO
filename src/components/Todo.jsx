@@ -1,5 +1,7 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { styled } from 'styled-components' 
+import { removeTodo, updateTodo } from '../redux/modules/todos'
 
 function Todo() {
 
@@ -27,6 +29,7 @@ function Todo() {
     font-weight: 600;
   `
 
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -34,8 +37,12 @@ function Todo() {
         <h3>제목입니다.</h3>
         <p>내용입니다.</p>
         <ButtonBox>
-          <Button style={{backgroundColor: '#FDE5EC'}}>삭제하기</Button>
-          <Button style={{backgroundColor: '#CECE5A'}}>완료</Button>
+          <Button style={{backgroundColor: '#FDE5EC'}}
+          onClick={() => {dispatch(removeTodo())}}
+          >삭제하기</Button>
+          <Button style={{backgroundColor: '#CECE5A'}}
+          onClick={() => {dispatch(updateTodo())}}
+          >완료</Button>
         </ButtonBox>
       </TodoBox>
     </>

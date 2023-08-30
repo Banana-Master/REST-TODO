@@ -4,6 +4,7 @@ import { styled } from 'styled-components'
 import Todos from '../components/Todos'
 import InputForm from '../components/InputForm'
 
+
 function Home() {
 
   const Body = styled.div`
@@ -19,8 +20,6 @@ function Home() {
     justify-content: space-between;
 
   `
-
-
   return (
     <Body>
       <Title>
