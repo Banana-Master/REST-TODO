@@ -38,11 +38,15 @@ export const updateTodo = (payload) => {
 };
 
 const todos = (state = initialState, action) => {
-  console.log({ action });
+  console.log( action );
+  console.log(state);
   switch (action.type) {
     case TODO_SAVE:
       return state;
     case TODO_REMOVE:
+      state.map((item) => {
+        
+      })
       return state;
 
     case TODO_UPDATE:
