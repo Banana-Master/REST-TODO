@@ -1,16 +1,16 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
 const initialState = [
   {
     id: uuid(),
-    title: '열라면 먹고 싶다',
-    content: '열라면 4개 한 번에 먹고 싶다',
+    title: "열라면 먹고 싶다",
+    content: "열라면 4개 한 번에 먹고 싶다",
     isDone: false,
   },
   {
     id: uuid(),
-    title: '피자먹기',
-    content: '치즈크러스트는 꼭 추기하기',
+    title: "피자먹기",
+    content: "치즈크러스트는 꼭 추기하기",
     isDone: true,
   },
 ];
@@ -18,9 +18,9 @@ const initialState = [
 // setCount(count + 1);
 // initialState , Reducer
 
-const TODO_SAVE = 'todos/TODO_SAVE';
-const TODO_REMOVE = 'todos/TODO_REMOVE';
-const TODO_UPDATE = 'todos/TODO_UPDATE';
+const TODO_SAVE = "todos/TODO_SAVE";
+const TODO_REMOVE = "todos/TODO_REMOVE";
+const TODO_UPDATE = "todos/TODO_UPDATE";
 
 export const addTodo = (payload) => {
   return { type: TODO_SAVE, payload };
@@ -31,10 +31,7 @@ export const removeTodo = (payload) => {
 };
 
 export const updateTodo = (payload) => {
-  return {
-    type: TODO_UPDATE,
-    payload,
-  };
+  return { type: TODO_UPDATE, payload };
 };
 
 const todos = (state = initialState, action) => {
@@ -44,11 +41,17 @@ const todos = (state = initialState, action) => {
       return state;
 
     case TODO_REMOVE:
-      state.map((item) => {});
-      return state;
+      return state.filter((item) => {
+        return item.id !== action.payload;
+      });
 
     case TODO_UPDATE:
-      return state;
+      return state.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, isDone: !item.isDone };
+        }
+        return item;
+      });
 
     default:
       return state;
