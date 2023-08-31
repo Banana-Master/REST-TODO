@@ -41,7 +41,15 @@ const TodoContent = ({ title, content, todo }) => {
       <Title onClick={() => navigate(`detail/${todo.id}`, { state: todo })}>
         {title}
       </Title>
-      <p>{content}</p>
+      <p
+        style={{
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {content}
+      </p>
     </>
   );
 };
@@ -49,7 +57,7 @@ const TodoContent = ({ title, content, todo }) => {
 export default Todo;
 
 const TodoBox = styled.div`
-  border: 3px solid green;
+  border: 3px solid #93c6e6;
   border-radius: 3px;
   margin: 1rem;
   padding: 1rem;
@@ -73,6 +81,9 @@ const Button = styled.button`
 `;
 
 const Title = styled.h3`
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   cursor: pointer;
   &:hover {
     text-decoration: underline;

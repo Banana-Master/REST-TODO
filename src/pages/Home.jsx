@@ -10,7 +10,7 @@ function Home() {
     min-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    background-color: beige;
+    /* background-color: beige; */
   `;
   const Title = styled.div`
     padding: 1rem 2rem;
@@ -20,7 +20,9 @@ function Home() {
   return (
     <Body>
       <Title>
-        <span>My Todo List</span>
+        <span style={{fontSize: '20px', fontWeight: '700'}}>
+          My Todo List
+          </span>
         <span>React</span>
       </Title>
       <InputForm></InputForm>
