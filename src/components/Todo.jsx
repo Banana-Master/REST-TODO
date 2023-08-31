@@ -2,13 +2,15 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { styled } from "styled-components";
 import { removeTodo, updateTodo } from "../redux/modules/todos";
+import { useNavigate } from "react-router-dom";
 
 function Todo({ todo }) {
   const dispatch = useDispatch();
+
   return (
     <>
       <TodoBox>
-        <TodoContent title={todo.title} content={todo.content} />
+        <TodoContent title={todo.title} content={todo.content} todo={todo} />
         <ButtonBox>
           <Button
             style={{ backgroundColor: "#FDE5EC" }}
@@ -24,7 +26,7 @@ function Todo({ todo }) {
               dispatch(updateTodo(todo.id));
             }}
           >
-            {todo.isDone ? '취소' : '완료'}
+            {todo.isDone ? "취소" : "완료"}
           </Button>
         </ButtonBox>
       </TodoBox>
@@ -32,17 +34,19 @@ function Todo({ todo }) {
   );
 }
 
-const TodoContent = ({ title, content }) => {
+const TodoContent = ({ title, content, todo }) => {
+  const navigate = useNavigate();
   return (
     <>
-      <h3>{title}</h3>
+      <Title onClick={() => navigate(`detail/${todo.id}`, { state: todo })}>
+        {title}
+      </Title>
       <p>{content}</p>
     </>
   );
 };
 
 export default Todo;
-
 
 const TodoBox = styled.div`
   border: 3px solid green;
@@ -66,4 +70,11 @@ const Button = styled.button`
   cursor: pointer;
   border: none;
   font-weight: 600;
+`;
+
+const Title = styled.h3`
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
