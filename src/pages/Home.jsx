@@ -26,7 +26,7 @@ function Home() {
       <InputForm></InputForm>
 
       <Todos></Todos>
-      <Todo></Todo>
+      {/* <Todo></Todo> */}
     </Body>
   );
 }
