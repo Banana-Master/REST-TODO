@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Todo from './Todo';
 
 function Todos() {
   const todos = useSelector((state) => state.todos);
@@ -11,13 +12,13 @@ function Todos() {
       {todos
         .filter((todo) => !todo.isDone)
         .map((todo) => (
-          <TestTodo key={todo.id} todo={todo} />
+          <Todo key={todo.id} todo={todo} />
         ))}
       <h2>done...</h2>
       {todos
         .filter((todo) => todo.isDone)
         .map((todo) => (
-          <TestTodo key={todo.id} todo={todo} />
+          <Todo key={todo.id} todo={todo} />
         ))}
     </div>
   );
